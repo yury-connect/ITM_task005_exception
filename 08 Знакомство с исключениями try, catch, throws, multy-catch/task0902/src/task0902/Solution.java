@@ -12,6 +12,7 @@ Requirements:
 3. Каждый метод должен возвращать имя метода, вызвавшего его.
 4. Для получения имени вызвавшего метода, используй метод getMethodName.*/
 
+
 public class Solution {
     public static void main(String[] args) {
         method1();
