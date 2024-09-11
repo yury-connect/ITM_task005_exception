@@ -1,5 +1,6 @@
 package task0911;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /* 
@@ -19,12 +20,18 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) {
-        //напишите тут ваш код
 
-        HashMap<String, String> map = new HashMap<String, String>(null);
-        map.put(null, null);
-        map.remove(null);
-
-        //напишите тут ваш код
+        try {
+            HashMap<String, String> map = new HashMap<String, String>(null);
+            map.put(null, null);
+            map.remove(null);
+        } catch (NullPointerException e) {
+            System.out.println("\n\tType: \t" + e.getClass().getName());
+            System.out.println("\n\tMessage: \t" + e.getMessage());
+            System.out.println("\n\tStackTraceElements:");
+            Arrays.stream(e.getStackTrace()).forEach(System.out::println);
+        } catch (Exception eprst) {
+            System.err.println("Не верно написан код. Программист балбес! :)");
+        }
     }
 }
