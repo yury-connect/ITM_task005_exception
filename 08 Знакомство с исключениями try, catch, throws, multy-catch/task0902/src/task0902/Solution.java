@@ -15,30 +15,36 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) {
-        method1();
+        System.out.println("\n\n\tЦепочка вызовов:\n" + method1());;
     }
 
     public static String method1() {
-        method2();
-        //напишите тут ваш код
+        return whoCalledMe() + " -> " + method2();
     }
-
     public static String method2() {
-        method3();
-        //напишите тут ваш код
+        return whoCalledMe() + " -> " + method3();
     }
 
     public static String method3() {
-        method4();
-        //напишите тут ваш код
+        return whoCalledMe() + " -> " + method4();
     }
 
     public static String method4() {
-        method5();
-        //напишите тут ваш код
+        return whoCalledMe() + " -> " + method5();
     }
 
     public static String method5() {
-        //напишите тут ваш код
+        return whoCalledMe();
+    }
+
+    private static String whoCalledMe() {
+        String callingMethodName = getCallingMethodName(3);
+        System.out.printf("На связи метод: '%s'. Меня вызвал метод: '%s'\n", getCallingMethodName(2), callingMethodName);
+        return callingMethodName;
+    }
+
+    private static String getCallingMethodName(int n) {
+        StackTraceElement[] stackTraceElements = new Exception().getStackTrace();
+        return stackTraceElements[n].getMethodName();
     }
 }
