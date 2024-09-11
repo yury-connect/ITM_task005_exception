@@ -14,13 +14,23 @@ Requirements:
 4. Выведенное сообщение должно содержать тип возникшего исключения.
 5. Имеющийся код в методе main не удалять.*/
 
+import java.util.Arrays;
+
 public class Solution {
     public static void main(String[] args) {
-        //напишите тут ваш код
 
-        int num = Integer.parseInt("XYZ");
-        System.out.println(num);
-
-        //напишите тут ваш код
+        try {
+            int num = Integer.parseInt("XYZ");
+            System.out.println(num);
+        } catch (NumberFormatException e) {
+            System.out.println("\n\tType: \t" + e.getClass().getSimpleName());
+            System.out.println("\n\tClass: \t" + e.getClass().getName());
+            System.out.println("\n\tMessage: \t" + e.getMessage());
+            System.out.println("\n\tStackTraceElements:");
+            Arrays.stream(e.getStackTrace()).forEach(System.out::println);
+        } catch (Exception eprst) {
+            System.err.println("Не верно написан код. Программист балбес! :)");
+            throw eprst;
+        }
     }
 }
