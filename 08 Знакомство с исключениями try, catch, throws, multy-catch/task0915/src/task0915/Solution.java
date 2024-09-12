@@ -30,14 +30,27 @@ Requirements:
 7. Метод main должен логировать исключения, которые кидает метод handleExceptions.*/
 
 public class Solution {
-    public static StatelessBean BEAN = new StatelessBean();
+    public final static StatelessBean BEAN = new StatelessBean(); // НЕДОЧЕТ в задании: тут должен стоять 'final'
 
     public static void main(String[] args) {
-        handleExceptions();
+        try {
+            handleExceptions();
+        } catch (Exception e) {
+            BEAN.log(e);
+        }
     }
 
-    public static void handleExceptions() {
-        BEAN.methodThrowExceptions();
+    public static void handleExceptions() throws FileSystemException {
+        try {
+            BEAN.methodThrowExceptions();
+        } catch (FileSystemException e) {
+            BEAN.log(e);
+            throw e;
+        } catch (CharConversionException e) {
+            BEAN.log(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static class StatelessBean {
