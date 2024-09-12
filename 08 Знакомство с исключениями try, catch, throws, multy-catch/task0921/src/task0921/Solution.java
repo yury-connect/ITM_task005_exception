@@ -1,6 +1,7 @@
 package task0921;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,15 @@ public class Solution {
     }
 
     public static void readData() {
-        //напишите тут ваш код
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            String str = bufferedReader.readLine();
+            double num = Double.parseDouble(str);
+            System.out.printf("Введенное число: %f\n", num);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (NumberFormatException e) {
+            System.out.printf("Введенные данные не являются числом\nСообщение об ошибке: {%s}", e.getMessage());
+        }
     }
 }
