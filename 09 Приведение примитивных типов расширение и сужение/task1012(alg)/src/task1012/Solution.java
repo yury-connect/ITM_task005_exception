@@ -2,9 +2,7 @@ package task1012;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /* 
 Количество букв
@@ -38,12 +36,38 @@ public class Solution {
                 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
 
         // Ввод строк
-        ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < 10; i++) {
+        final int size = 2;
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            System.out.printf("Введите строку: №%d из %d: ", i + 1, size);
             String line = reader.readLine();
             list.add(line.toLowerCase());
         }
 
-        // напишите тут ваш код
+        Map<Character, Integer> lettersMap = new HashMap<>();
+        for (Character letter : alphabet) {
+            lettersMap.put(letter, 0);
+        }
+
+        for (String line : list) {
+            countLetters(lettersMap, line);
+        }
+
+        lettersMap.entrySet()
+                .stream()
+                .sorted(Comparator.comparing(Map.Entry::getKey))
+                .forEach(entry -> System.out.printf(
+                        "Буква   '%s'   встречается \t %s   раз;\n", entry.getKey(), entry.getValue()));
+    }
+
+    private static void countLetters(Map<Character, Integer> letters, String line) {
+        line.replace(" ", "");
+        for (char current : line.toCharArray()) {
+            try {
+                letters.put(current, letters.get(current) + 1);
+            } catch (NullPointerException e) {
+                System.out.println("\tНеизвестная буква:   '" + current + "'");
+            }
+        }
     }
 }
