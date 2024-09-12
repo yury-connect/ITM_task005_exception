@@ -22,6 +22,10 @@ public class Solution {
         short number = 9;
         char zero = '0';
         int nine = (zero + number);
-        System.out.println(nine);
+        System.out.println(nine - (int) zero); //  - (int) zero
     }
+    /*
+    Чтобы получить число 9, нужно вычесть значение символа '0' (48).
+    Это происходит в выражении nine - (int) zero.
+     */
 }
