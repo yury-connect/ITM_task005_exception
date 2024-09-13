@@ -40,6 +40,7 @@ Requirements:
 4. Программа должна помещать в HashMap пары считанные с клавиатуры.
 5. Программа должна выводить на экран содержимое HashMap согласно условию. Ключ и значение разделены пробелом. Каждое значение с новой строки.*/
 
+
 public class Solution {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
