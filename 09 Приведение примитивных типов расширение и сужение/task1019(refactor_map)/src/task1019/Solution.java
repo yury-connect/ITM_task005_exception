@@ -41,12 +41,32 @@ Requirements:
 5. Программа должна выводить на экран содержимое HashMap согласно условию. Ключ и значение разделены пробелом. Каждое значение с новой строки.*/
 
 public class Solution {
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
     public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Map<String, Integer> map = new HashMap<>();
 
-        int id = Integer.parseInt(reader.readLine());
-        String name = reader.readLine();
+        boolean isContinue = true;
+        while (isContinue) {
+            System.out.print("\nВведите число: ");
+            int id = Integer.parseInt(getLine());
+            System.out.print("Введите строку:");
+            String name = getLine();
+            System.out.printf("\tВведено: \tId = '%d', \tName = '%s'\n", id, name);
+            if (name.length() != 0) {
+                map.put(name, id);
+            } else {
+                isContinue = false;
+            }
+        }
 
-        System.out.println("Id=" + id + " Name=" + name);
+        System.out.println("\nВывожу результат:");
+        for (Map.Entry<String, Integer> entry: map.entrySet()) {
+            System.out.printf("key = '%s', \tvalue = '%d'\n", entry.getKey(), entry.getValue());
+        }
+    }
+
+    private static String getLine() throws IOException {
+        return reader.readLine();
     }
 }
