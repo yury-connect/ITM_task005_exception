@@ -21,7 +21,8 @@ public class Solution {
     public static void main(String[] args) {
         int a = 50;
         int b = 17;
-        double d = (float) a / b;
+//        double d =  (float) a / b; // 2.941176414489746 -базовый вариант
+        double d =  (double) a / b; // 2.9411764705882355 -правильный вариант
         System.out.println(d);
     }
 }
