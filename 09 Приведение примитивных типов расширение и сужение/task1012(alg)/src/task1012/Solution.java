@@ -36,7 +36,7 @@ public class Solution {
                 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я');
 
         // Ввод строк
-        final int size = 2;
+        final int size = 10;
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             System.out.printf("Введите строку: №%d из %d: ", i + 1, size);
