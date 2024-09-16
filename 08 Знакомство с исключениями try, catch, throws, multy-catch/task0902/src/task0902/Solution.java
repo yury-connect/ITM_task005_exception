@@ -43,7 +43,7 @@ public class Solution {
         String callingMethodName = getCallingMethodName(3);
         System.out.printf("На связи метод: '%s'. Меня вызвал метод: '%s'\n"
                 , getCallingMethodName(2)
-                , callingMethodName)
+                , callingMethodName);
         return callingMethodName;
     }
 
